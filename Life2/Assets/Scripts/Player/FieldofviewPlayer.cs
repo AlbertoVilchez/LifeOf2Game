@@ -46,7 +46,7 @@ public class FieldofviewPlayer : MonoBehaviour
 		DrawFieldOfView();
 	}
 
-	void FindVisibleTargets() // Recoge los objetos que entrar en el area de vision
+	void FindVisibleTargets()
 	{
 		visibleTargets.Clear();
 		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
@@ -205,5 +205,7 @@ public class FieldofviewPlayer : MonoBehaviour
 			pointB = _pointB;
 		}
 	}
+
+
 
 }
