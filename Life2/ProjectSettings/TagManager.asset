@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pared
+  - Planta1
+  - Planta2
+  - Planta3
   layers:
   - Default
   - TransparentFX
