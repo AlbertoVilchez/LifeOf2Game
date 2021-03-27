@@ -103,7 +103,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
---- !u!114 &1475256236074555361
+--- !u!114 &974525081713814281
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
