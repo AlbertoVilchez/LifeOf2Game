@@ -10,11 +10,15 @@ public class ControllerPlayer : MonoBehaviour
     public float SpeedJump;
     bool Agachado = true;
 
-    [Header("Vectores")]
+    public Vector3 PositionArm;
     Vector3 DirrecionPlayer;
     Vector3 CamForward;
     Vector3 CamRight;
     Vector3 MovePlayer;
+
+    [Header("GameObject")]
+
+    [SerializeField] GameObject Arma;
 
 
     [Header("Player")]
@@ -32,21 +36,33 @@ public class ControllerPlayer : MonoBehaviour
     void Update()
     {     
         MovementPlayer();
+        Combate();
         //JumpPlayer();
     }
 
-   /* void JumpPlayer()
+    /* void JumpPlayer()
+     {
+         if (ControlPlayer.isGrounded)
+         {
+             if (Input.GetButtonDown("Jump"))
+             {
+                 MovePlayer.y = SpeedJump;
+                 Debug.Log("Salto");
+             }
+         }
+     }*/
+    void CamDirection() // Posicion personaje relativo a la camara
     {
-        if (ControlPlayer.isGrounded)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                MovePlayer.y = SpeedJump;
-                Debug.Log("Salto");
-            }
-        }
-    }*/
+        CamForward = CameraMain.transform.forward;
+        CamRight = CameraMain.transform.right;
 
+        CamForward = CamForward.normalized;
+        CamRight = CamRight.normalized;
+
+        CamForward.y = 0;
+        CamRight.y = 0;
+
+    }
     void MovementPlayer() // Movimiento del personaje
     {
         Horizontal = Input.GetAxis("Horizontal");
@@ -76,7 +92,7 @@ public class ControllerPlayer : MonoBehaviour
             if (Agachado)
             {
                 PlayerAnimactorController.SetBool("CouchActivate", true);
-                SpeedPlayer = 0.8f;
+                SpeedPlayer = 2f;
                 Agachado = false;
                 Debug.Log("Agachado");
             }
@@ -84,7 +100,7 @@ public class ControllerPlayer : MonoBehaviour
             {
                 Debug.Log("Sube");
                 PlayerAnimactorController.SetBool("CouchActivate", false);
-                SpeedPlayer = 1f;
+                SpeedPlayer = 4f;
                 Agachado = true;
             }
 
@@ -98,26 +114,31 @@ public class ControllerPlayer : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                SpeedPlayer = 2.5f;
+                SpeedPlayer = 10;
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                SpeedPlayer = 1;
+                SpeedPlayer = 4;
             }
 
         }
        
     }
-    void CamDirection() // Posicion personaje relativo a la camara
+
+    void Combate()
     {
-        CamForward = CameraMain.transform.forward;
-        CamRight = CameraMain.transform.right;
-
-        CamForward = CamForward.normalized;
-        CamRight = CamRight.normalized;
-
-        CamForward.y = 0;
-        CamRight.y = 0;
-
+        if (Arma)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PlayerAnimactorController.SetLayerWeight(1, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                PlayerAnimactorController.SetLayerWeight(1, 0);
+            }
+        }
+        
     }
+   
 }
