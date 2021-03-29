@@ -7,20 +7,14 @@ public class ControllerPlayer : MonoBehaviour
 {
     float Horizontal, Vertical;
     public float SpeedPlayer,SpeedRotation;
-    public float SpeedJump;
     bool Agachado = true;
 
-    public Vector3 PositionArm;
     Vector3 DirrecionPlayer;
     Vector3 CamForward;
     Vector3 CamRight;
     Vector3 MovePlayer;
 
-    [Header("GameObject")]
-
-    [SerializeField] GameObject Arma;
-
-
+  
     [Header("Player")]
     public Camera CameraMain;
     CharacterController ControlPlayer;
@@ -36,7 +30,6 @@ public class ControllerPlayer : MonoBehaviour
     void Update()
     {     
         MovementPlayer();
-        Combate();
         //JumpPlayer();
     }
 
@@ -94,11 +87,11 @@ public class ControllerPlayer : MonoBehaviour
                 PlayerAnimactorController.SetBool("CouchActivate", true);
                 SpeedPlayer = 2f;
                 Agachado = false;
-                Debug.Log("Agachado");
+                
             }
             else
             {
-                Debug.Log("Sube");
+        
                 PlayerAnimactorController.SetBool("CouchActivate", false);
                 SpeedPlayer = 4f;
                 Agachado = true;
@@ -125,20 +118,8 @@ public class ControllerPlayer : MonoBehaviour
        
     }
 
-    void Combate()
-    {
-        if (Arma)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                PlayerAnimactorController.SetLayerWeight(1, 1);
-            }
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                PlayerAnimactorController.SetLayerWeight(1, 0);
-            }
-        }
-        
-    }
+    
+
    
+
 }
