@@ -1352,6 +1352,8 @@ GameObject:
   m_Component:
   - component: {fileID: 285616842673900918}
   - component: {fileID: 285616842681426514}
+  - component: {fileID: 992222592}
+  - component: {fileID: 992222591}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -1393,7 +1395,7 @@ Animator:
   m_GameObject: {fileID: 285616842674158550}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 897b34267f422c1499700402763d096e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aca898aafd09f0140803678a5d1d418c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1402,6 +1404,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!143 &992222592
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285616842674158550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.73
+  m_Radius: 0.29
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.91, z: 0}
+--- !u!114 &992222591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285616842674158550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bdb1603c8c3ead4f9bbe4fbb0ba1e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedPlayer: 4
+  SpeedRotation: 1
+  SpeedJump: 0
+  PositionArm: {x: 0, y: 0, z: 0}
+  Arma: {fileID: 0}
+  CameraMain: {fileID: 0}
 --- !u!1 &285616842674161472
 GameObject:
   m_ObjectHideFlags: 0
