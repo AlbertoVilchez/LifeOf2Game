@@ -67,7 +67,7 @@ public class ControllerPlayer : MonoBehaviour
         CamDirection();
         MovePlayer = DirrecionPlayer.x * CamRight + DirrecionPlayer.z * CamForward;
         ControlPlayer.transform.LookAt(ControlPlayer.transform.position + MovePlayer);
-
+        //RotationPlayer();
         if (DirrecionPlayer.magnitude > 0.1f)
         {
             ControlPlayer.Move(MovePlayer * Time.deltaTime * SpeedPlayer);
@@ -75,6 +75,27 @@ public class ControllerPlayer : MonoBehaviour
         }
         CrouchPlayer();
         PlayerAnimactorController.SetFloat("PlayerWalkVelocity", DirrecionPlayer.magnitude * SpeedPlayer);
+    }
+
+    void RotationPlayer()
+    {
+        Ray MouseRotation = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(MouseRotation,out hit))
+        {
+            Vector3 TargerPosition = new Vector3(hit.point.x,transform.position.y,hit.point.z);
+
+            Quaternion RotationPlayer = Quaternion.LookRotation(TargerPosition - transform.position);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation,RotationPlayer,Time.deltaTime * SpeedRotation);
+            
+
+        }
+
+
+
+
     }
 
     void CrouchPlayer()
